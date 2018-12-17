@@ -62,19 +62,29 @@ $nombre_usuario_proyecto=$userDetails->name;
 					$pdo=getDB();
 					$sql="SELECT * from sprints WHERE cod_project IN (SELECT cod_project FROM proj_users WHERE name_proj='".$v1."' AND username IN (SELECT username FROM users WHERE name='".$nombre_usuario_proyecto."'))";
 
+					$array=[];
 					foreach ($pdo->query($sql) as $row) {
-				    //echo $row['id_sprint'] . "\t";
-					//echo $row['cod_project'] . "\t";
-					//echo $row['number_sprint'] . "\t";
-					echo "<b>",$row['name_sprint'] . "\t</b><br>";
-					echo "Fecha: ",$row['date_start'] . "\t - ";
-					echo $row['date_finish'] . "\t";
-					echo "<b style='float:right'>";
-					echo "Horas totales: ",$row['total_hours'] . "\t <br>";
-					echo "Horas restantes: ",$row['hours_left'] . "\t";
-					echo "</b>";
-					echo '<br><br>';
-					}
+					    
+						echo "<button class='acordeon' style='background-color:#4f986c;color: #fff; cursor: pointer;  padding: 18px; width:100%; text-align: left; border: 1px solid white; transition: 0.4s;font: 20px Lato, sans-serif;'>".$row['name_sprint']."</button>";
+						echo "<div class='panel' style='padding: 0.18px;background-color: white;display: none;overflow: hidden;'>";
+						echo	"<p style='font: 16px Lato, sans-serif;'>";
+						echo "<b>",$row['name_sprint'] . "\t</b><br>";
+						echo "Fecha: ",$row['date_start'] . "\t - ";
+						echo $row['date_finish'] . "\t";
+						$fechaInicio=strtotime($row['date_start']);
+						$fechaFin=strtotime($row['date_finish']);
+						$fechaHoy=strtotime(date('Y-m-d'));
+						array_push($array, $fechaInicio);
+						array_push($array, $fechaFin);
+						array_push($array, $fechaHoy);
+						echo "<b style='float:right'>";
+						echo "Horas totales: ",$row['total_hours'] . "\t <br>";
+						echo "Horas restantes: ",$row['hours_left'] . "\t";
+						echo "</b>";
+						echo '<br><br>';
+						echo "</p>";
+						echo "</div>";
+						}
 					?>
 				</div>
 			</div>
@@ -83,7 +93,6 @@ $nombre_usuario_proyecto=$userDetails->name;
 					<?php 
 					$pdo=getDB();
 					$sql="SELECT * from specifications WHERE cod_project IN (SELECT cod_project FROM proj_users WHERE name_proj='".$v1."' AND username IN (SELECT username FROM users WHERE name='".$nombre_usuario_proyecto."'))";
-
 					foreach ($pdo->query($sql) as $row) {
 			        //echo $row['id_specification'] . "\t";
 			        //echo $row['cod_specification'] . "\t";
@@ -107,3 +116,32 @@ $nombre_usuario_proyecto=$userDetails->name;
 </div>
 </body>
 </html>
+<script type="text/javascript">
+		var acc= document.getElementsByClassName('acordeon');
+
+		for(i=0; i< acc.length; i++){
+			acc[i].addEventListener("click",function(){
+				this.classList.toggle("active");
+
+				var panel =this.nextElementSibling;
+				if (panel.style.display==="block"){
+					panel.style.display="none";
+				}else{
+					panel.style.display="block";
+				}
+			});
+		}
+
+		var arrayFechas = '<?php echo json_encode($array);?>';
+
+		for (i=0; i <9; i++3) {
+			
+			if (arrayFechas[i]>arrayFechas[i+2]) {
+				acc[i].style.backgroundColor='grey';
+			}else if (arrayFechas[i]<arrayFechas[i+2] AND arrayFechas[i+1]>arrayFechas[i+2]) {
+				acc[i].style.backgroundColor='green';
+			}else if (arrayFechas[i+1]<arrayFechas[i+2]) {
+				acc[i].style.backgroundColor='black';
+			}
+		};
+</script>

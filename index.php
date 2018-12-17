@@ -99,8 +99,8 @@ $errorMsgReg="Username or Email already exists.";
 <label>Password</label>
 <input type="password" id="nickPass" name="password" autocomplete="off"/>
 <div class="botones">
-<input type="submit" class="buttonLog" name="loginSubmit" value="Login"/>
-<input type="submit" class="buttonLog" name="reload" value="Try Again" onClick="location.reload();"/>
+<input type="submit" class="button" name="loginSubmit" value="Login"/>
+<input type="submit" class="button" name="reload" value="Try Again" onClick="location.reload();"/>
 </div>
 </form>
 </div>

@@ -1,13 +1,10 @@
 <?php
-
 include('config.php');
 include('session.php');
-
 //include('proyecjSessions');
 $userDetails=$userClass->userDetails($session_uid);
 $nombres_de_proyectos=$projectsDetails=$userClass->projectsDetails($session_uid);
 $rolDetails=$userClass->rolDetails($session_uid);
-
 $rol=$rolDetails->rol;
 //echo $rol;
 echo "<p style='display:none' id='roles'>" . $rol. "</p>";
@@ -95,10 +92,8 @@ echo "<p style='display:none' id='roles'>" . $rol. "</p>";
 </html>
 
 <script type="text/javascript">
-
 			var jsvarbutton=document.getElementById('roles').innerHTML;
 			console.log(jsvarbutton);
-
 			function mostrarBoton(){
 				if (jsvarbutton!="ScrumMaster"){
 					document.getElementById('id_boton').style.display="none";
@@ -106,11 +101,8 @@ echo "<p style='display:none' id='roles'>" . $rol. "</p>";
 				else{
 					document.getElementById('id_boton').style.display="bock";
 				}
-
 			}
-
 			mostrarBoton();
-
 			
 			//combobox scrum_master
 			var select_combobox_scrum = document.createElement("select");
@@ -142,7 +134,6 @@ echo "<p style='display:none' id='roles'>" . $rol. "</p>";
 			document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
 			document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
 			
-
 			//combobox product_owner
 			var select_combobox_product = document.createElement("select");
 			select_combobox_product.setAttribute("id", "campo_product_owner");
@@ -170,7 +161,6 @@ echo "<p style='display:none' id='roles'>" . $rol. "</p>";
 			document.getElementById("formulario_derecha").appendChild(select_combobox_product);
 			document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
 			
-
 			//checkbox developers
 			var select_combobox_dev = document.createElement("select");
 			select_combobox_dev.setAttribute("id", "campo_dev");
@@ -199,6 +189,4 @@ echo "<p style='display:none' id='roles'>" . $rol. "</p>";
 			document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
 			document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
 			document.getElementById("formulario_derecha").appendChild(document.createElement("br"));
-
-
 		</script>

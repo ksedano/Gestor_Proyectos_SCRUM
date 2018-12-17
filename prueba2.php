@@ -22,7 +22,7 @@
 			echo "<br>";
 			echo $numero_proyecto;
 			echo "<br>";
-			
+
 			$radio = $_POST["checkbox"];
 	                foreach ($radio as $key => $value) {
 	                    echo "<br>$value";

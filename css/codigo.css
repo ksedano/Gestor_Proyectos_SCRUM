@@ -349,3 +349,44 @@ color: #262123;
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+.acordeon{
+      background-color: #4f986c;
+      color: #fff;            /*color para la letra*/
+      cursor: pointer;  
+      padding: 18px;
+      width:100%;
+      text-align: left;
+      border: 1px solid white;
+      transition: 0.4s;         /*efecto para el Hovering*/
+      font: 20px Lato, sans-serif;
+    }
+  /*Estilo para los div, que estarán ocultos  por defecto y se mostrarán con el javascript*/
+
+    .panel{
+      padding: 0.18px;
+      background-color: white;
+      display: none;
+      overflow: hidden;
+    }
+
+    p{
+      font: 16px Lato, sans-serif;
+    }
+
+    .active, .acordeon:hover{
+      background-color: #527E6A;
+    }
+
+    .acordeon:after{
+      content: '\02795';        /*Unicode character for plus sign (+) */
+      font-size: 15px;
+      float: right;
+      margin-left: 5px;
+
+    }
+
+    .active:after{
+      content: '\2796';
+    }
+
