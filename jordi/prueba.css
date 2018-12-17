@@ -1,0 +1,13 @@
+#formulario {
+  background-color: #fafafa;
+  margin: 1em;
+  margin-left: 14em;
+  margin-right: 14em;
+  padding: 1em;
+  border: 2px solid #ccc;
+}
+#boton_crear_dentro{
+	position: relative;
+	left: 6em;
+	bottom: 3em;
+}

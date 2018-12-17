@@ -1,1 +1,1 @@
-# Gestor_Proyectos_SCRUM
+# SCRUM
